@@ -121,4 +121,92 @@ client.on('message', function(message) {
     }
 
 })
+client.on("message", msg => {//Alpha Codes SoEdit
+        let msgarray = msg.content.split(" ");//Alpha Codes SoEdit
+        let cmd = msgarray[0];//Alpha Codes SoEdit
+        let args = msgarray.slice(1); //Alpha Codes SoEdit
+        let Alpha = '%';//البرفكس      
+if(cmd === `${Alpha}dm`){//Alpha Codes SoEdit
+        let mentions = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[0]));//Alpha Codes SoEdit
+        if(!mentions) return msg.reply("**منشن العضو**").then(men => {//Alpha Codes SoEdit
+            men.delete(2222)//Alpha Codes SoEdit
+            msg.delete()
+        })
+        let args2 = args.join(" ").slice(22);
+        if(!args2) return msg.reply("**اكتب الرسالة**").then(am => {
+            am.delete(2222)
+            msg.delete()
+        })
+    let emb = new Discord.RichEmbed()
+    .setTitle("**DM**")//Alpha Codes SoEdit
+    .addField("**الرسالة**", args2)//Alpha Codes SoEdit
+    .addField("**الرسالة لـ**", mentions)//Alpha Codes SoEdit
+    .addField("**من قبل**", msg.author)//Alpha Codes SoEdit
+    .setDescription(`**هل انت متاْكد برسالتك؟
+    ✔ | نعم
+ 
+    ❌ | لا**`)//Alpha Codes SoEdit
+    msg.channel.send(emb).then(od => {//Alpha Codes SoEdit
+        od.react("✔")
+        .then(()=> od.react("✔"))
+        .then(()=> od.react("❌"))
+        let reaction1Filter = (reaction, user) => reaction.emoji.name === '✔' && user.id === msg.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === msg.author.id;
+ 
+let reaction1 = od.createReactionCollector(reaction1Filter, { time: 12000 });
+let reaction2 = od.createReactionCollector(reaction2Filter, { time: 12000 });
+reaction2.on("collect", r => {
+msg.reply("**تم الغاء رسل رسالتك بنجاح**").then(cn => {
+    cn.delete(2222)
+    msg.delete()
+})
+od.delete(2222)
+})
+reaction1.on("collect", r => {
+let embd = new Discord.RichEmbed()//Alpha Codes SoEdit
+.setTitle("**DM**")
+.setDescription(`** الرسالة نوع وش؟ :arrow_down:
+🚩 | امبد
+ 
+✨ | بدون امبد
+**`)
+ msg.delete()
+od.delete(2222)
+msg.channel.send(embd).then(bo => {
+    bo.react("🚩")
+    .then(() => bo.react("🚩"))
+    .then(() => bo.react("✨"))
+    let r1 = (reaction, user) => reaction.emoji.name === '🚩' && user.id === msg.author.id;
+    let r2 = (reaction, user) => reaction.emoji.name === '✨' && user.id === msg.author.id;
+   
+    let rec1 = bo.createReactionCollector(r1, { time: 12000 });
+    let rec2 = bo.createReactionCollector(r2, { time: 12000 });
+    rec1.on("collect", r => {
+    let embde = new Discord.RichEmbed()
+    .setTitle("**رسالة**")
+    .addField("**الرسالة**", args2)
+    .addField("**من قبل**", msg.author)
+    bo.delete(2222)
+    msg.reply("**تم ارسال الرسالة بنجاح ✔**").then(op => {
+        op.delete(2222)
+        msg.delete()
+    })
+    mentions.send(embde)
+    })
+    rec2.on("collect", r => {
+        mentions.send(args2)
+        msg.reply("**تم ارسال الرسالة بنجاح ✔**").then(ede => {
+            ede.delete(2222)
+            bo.delete(2222)
+            msg.delete()
+           
+        })//Alpha Codes SoEdit
+        })//Alpha Codes SoEdit
+     
+})//Alpha Codes SoEdit
+ 
+}) //Alpha Codes SoEdit
+})//Alpha Codes SoEdit
+    }//Alpha Codes SoEdit
+})//Alpha Codes SoEdit
 client.login(process.env.BOT_TOKEN);
