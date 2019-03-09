@@ -1,6 +1,6 @@
 ﻿const Discord = require('discord.js');
 const client = new Discord.Client();
-client.user.setGame(`%help |v:BETA|%credits|new mods<new cmd`,'https://www.twitch.tv/mohamedaminegamer');
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
