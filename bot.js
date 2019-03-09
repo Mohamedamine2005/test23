@@ -229,7 +229,7 @@ message.channel.send('تم')//if the step completed
 }})
 client.on('ready', () => {//new ready event
  setInterval(function(){
-     kboosh.guilds.forEach(g => {
+     client.guilds.forEach(g => {
                  var role = g.roles.find('name', 'Rainbow Rank');//rainbow role name
                  if (role) {
                      role.edit({color : "RANDOM"});
