@@ -461,12 +461,12 @@ client.on("message", async message => {
             .setThumbnail(message.author.avatarURL)
             .setDescription(`**__System_BOT |TPG| Version 1.1__ 
 
-            برودكاست عادي : %bc
+            برودكاست مساعدة : %help.bc
             دعوة البوت لسيرفرك : %invite
             معلومات عن السيرفر : %server
-            برودكاست للأونلاين فقط : %bco
+            صورة بوفايلك : %avatar
             يعرض لك عدد المتبندين من سيرفرك : %banned
-            رابط سيرفر الدعم الفني : https://discord.gg/nfW938z 
+            رابط سيرفر الدعم الفني : https://discord.gg/eHyjpZf
             **`);
             message.channel.sendEmbed(help); // رابط السيرفر يعود الى سيرفر CODES .
     }
@@ -493,73 +493,5 @@ client.on("message", message => { //clear
   
        
 });
-var prefix = "%";
-var EpicEdiTeD = {};
-client.on("message", function(message){
-if (message.content.startsWith(prefix + "profile")) {
-    if (!EpicEdiTeD[message.author.id]) {
-        EpicEdiTeD[message.author.id] = {Money:0,Xp:0,Level:0}
-    }
-     var mentionned = message.mentions.users.first();
- 
-      var epic;
-      if(mentionned){
-          var epic = mentionned;
-      } else {
-          var epic = message.author;
- 
-      }
- 
-   
-    var CulLevel = Math.floor(0.25 * Math.sqrt(EpicEdiTeD[message.author.id].Xp +1));
-    if (CulLevel > EpicEdiTeD[message.author.id].Level) {EpicEdiTeD[message.author.id].Level +=CulLevel}
-    let edited = new Discord.RichEmbed()
-    .setColor("Random")
-    .addField("الإسم :", message.author.tag)
-    .addField("الليفل :", EpicEdiTeD[message.author.id].Level)
-    .addField("الإكس بي :",Math.floor(EpicEdiTeD[message.author.id].Xp))
-    message.channel.send(edited);
-}
-if (!EpicEdiTeD[message.author.id]) {
-    EpicEdiTeD[message.author.id] = {Money:0,Xp:0,Level:0,Like:0}
-    }
- 
-EpicEdiTeD[message.author.id].Xp+= 0.25;
-EpicEdiTeD[message.author.id].Money+= 0.25;
- 
-});//AlphaCodes
-var prefix = "%";
-client.on("message", function(message){
-if (message.content.startsWith(prefix + "lev")) {
-    if (!EpicEdiTeD[message.author.id]) {
-        EpicEdiTeD[message.author.id] = {Money:0,Xp:0,Level:0}
-    }
-     var mentionned = message.mentions.users.first();
- 
-      var epic;
-      if(mentionned){
-          var epic = mentionned;
-      } else {
-          var epic = message.author;
- 
-      }
- 
-   
-    var CulLevel = Math.floor(0.25 * Math.sqrt(EpicEdiTeD[message.author.id].Xp +1));
-    if (CulLevel > EpicEdiTeD[message.author.id].Level) {EpicEdiTeD[message.author.id].Level +=CulLevel}
-    let edited = new Discord.RichEmbed()
-    .setColor("Random")
-    .addField("الأسم :", message.author.tag)
-    .addField("الليفل :", EpicEdiTeD[message.author.id].Level)
-    .addField("الأكس بي :",Math.floor(EpicEdiTeD[message.author.id].Xp))
-    message.channel.send(edited);
-}
-if (!EpicEdiTeD[message.author.id]) {
-    EpicEdiTeD[message.author.id] = {Money:0,Xp:0,Level:0,Like:0}
-    }
- 
-EpicEdiTeD[message.author.id].Xp+= 0.25;
-EpicEdiTeD[message.author.id].Money+= 0.25;
- 
-});//Alpha_Codes
+
 client.login(process.env.BOT_TOKEN);
