@@ -494,7 +494,7 @@ client.on("message", message => { //clear
        
 });
 var prefix = "%";
-var EpicEdiTeD = {%};
+var EpicEdiTeD = {};
 client.on("message", function(message){
 if (message.content.startsWith(prefix + "profile")) {
     if (!EpicEdiTeD[message.author.id]) {
